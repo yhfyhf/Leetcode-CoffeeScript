@@ -2,15 +2,7 @@
 (function() {
   var TreeNode, maxDepth;
 
-  TreeNode = (function() {
-    function TreeNode(val) {
-      this.val = val;
-      this.left = this.right = null;
-    }
-
-    return TreeNode;
-
-  })();
+  TreeNode = require("./TreeNode");
 
   maxDepth = function(root) {
     var max;
@@ -22,7 +14,7 @@
       }
     };
     if (root) {
-      return max(maxDepth(root.left), maxDepth(root.right)) + 1;
+      return max(maxDepth(root.left, maxDepth(root.right))) + 1;
     } else {
       return 0;
     }
